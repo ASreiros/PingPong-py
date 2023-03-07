@@ -28,9 +28,13 @@ class Paddle:
 
     def move_paddle(self):
         for segment in self.segments:
-            # if 300 > segment.ycor() > -300:
             if self.button_pressed:
-                segment.forward(10)
+                if self.segments[-1].heading() == 90 and self.segments[-1].ycor() >= 300:
+                    self.button_pressed = False
+                elif segment.heading() == 270 and segment.ycor() <= -300:
+                    self.button_pressed = False
+                else:
+                    segment.forward(10)
 
     def up(self):
         self.button_pressed = True
@@ -44,5 +48,4 @@ class Paddle:
 
     def stop(self):
         self.button_pressed = False
-
 
