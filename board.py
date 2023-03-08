@@ -24,3 +24,20 @@ class Board(Turtle):
 
             self.forward(step)
             self.left(90)
+
+        self.penup()
+        self.goto(0, 300)
+        self.setheading(270)
+        for m in range(30):
+            if m % 2 == 0:
+                self.penup()
+            else:
+                self.pendown()
+            self.forward(20)
+
+    def game_over(self, p):
+        self.penup()
+        self.goto(0, 0)
+        self.write("GAME OVER", move=False, align='center', font=('Arial', 50, 'normal'))
+        self.goto(0, -50)
+        self.write(f"Player {p}     won.", move=False, align='center', font=('Arial', 20, 'normal'))

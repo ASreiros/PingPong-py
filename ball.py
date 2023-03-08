@@ -1,16 +1,17 @@
 from turtle import Turtle
 from random import randint
 
-TIMER = 10
+TIMER = 20
+SPEED = 10
 
 
 class Ball(Turtle):
-    def __init__(self, speed):
+    def __init__(self):
         super().__init__()
         self.shape("circle")
         self.color("white")
         self.penup()
-        self.speed = speed
+        self.speed = SPEED
         self.timer = 0
 
         if randint(0, 1) > 0:
@@ -21,6 +22,7 @@ class Ball(Turtle):
 
     def start_ball(self, p):
         self.goto(0, 0)
+        self.speed = SPEED
         r = randint(-10, 10)
         self.setheading(p + r)
         self.timer = TIMER
@@ -48,9 +50,12 @@ class Ball(Turtle):
         else:
             self.timer -= 1
 
+
+
     def bounce_left(self):
         heading = self.heading()
         r = randint(-30, 30)
+        self.speed += 1
         if 90 > heading >= 0:
             self.setheading(180 - heading + r)
         else:
@@ -60,6 +65,7 @@ class Ball(Turtle):
     def bounce_right(self):
         heading = self.heading()
         r = randint(-30, 30)
+        self.speed += 1
         if 180 >= heading > 90:
             angle = 180 - heading
             self.setheading(angle + r)
