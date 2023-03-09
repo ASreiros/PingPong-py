@@ -16,6 +16,7 @@ paddle1 = Paddle(1)
 paddle2 = Paddle(2)
 ball = Ball()
 score = Score()
+screen.title("Ping Pong Game")
 
 screen.listen()
 screen.onkeypress(key="Up", fun=paddle2.up)
